@@ -3,7 +3,7 @@ import DOMPurify from 'dompurify';
 import { globalConfig, teaserListTexts, requestOptions, chatHttpOptions, MAX_CHAT_HISTORY } from '../config/globalConfig.js';
 import { chatEntryToString, newListWithEntryAtIndex } from '../utils/index.js';
 import { useChatController } from '../hooks/useChatController.js';
-import { useChatHistory } from '../hooks/useChatHistory.js';
+import { useChatHistory } from '../hooks/useChatHistory.jsx';
 
 // Import components
 import ChatStage from './ChatStage.jsx';

@@ -1,28 +1,27 @@
 import { NdJsonParserStream } from './data-format/ndjson.js';
-import { globalConfig } from '../../config/global-config.js';
+import { globalConfig } from '../../config/globalConfig.js';
 
-export function createReader(responseBody: ReadableStream<Uint8Array> | null) {
+export function createReader(responseBody) {
   return responseBody?.pipeThrough(new TextDecoderStream()).pipeThrough(new NdJsonParserStream()).getReader();
 }
 
-export async function* readStream<T>(reader: any): AsyncGenerator<T, void> {
+export async function* readStream(reader) {
   if (!reader) {
     throw new Error('No response body or body is not readable');
   }
 
-  let value: JSON | undefined;
-  let done: boolean;
+  let value;
+  let done;
   while ((({ value, done } = await reader.read()), !done)) {
-    yield new Promise<T>((resolve) => {
+    yield new Promise((resolve) => {
       setTimeout(() => {
-        resolve(value as T);
+        resolve(value);
       }, globalConfig.BOT_TYPING_EFFECT_INTERVAL);
     });
   }
 }
 
-// Stop stream
-export function cancelStream<T>(stream: ReadableStream<T> | null): void {
+export function cancelStream(stream) {
   if (stream) {
     stream.cancel();
   }

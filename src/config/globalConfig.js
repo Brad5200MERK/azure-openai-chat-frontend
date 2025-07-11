@@ -1,4 +1,4 @@
-const globalConfig = {
+export const globalConfig = {
   BOT_TYPING_EFFECT_INTERVAL: 50, // in ms
 
   // Is default prompts enabled?
@@ -47,7 +47,7 @@ const globalConfig = {
   CHAT_HISTORY_FOOTER_TEXT: 'Showing past {MAX_CHAT_HISTORY} conversations',
 };
 
-const teaserListTexts = {
+export const teaserListTexts = {
   TEASER_CTA_LABEL: 'Ask now',
   HEADING_CHAT: 'Chat with our support team',
   HEADING_ASK: 'Ask a question',
@@ -64,9 +64,9 @@ const teaserListTexts = {
   ],
 };
 
-const NEXT_QUESTION_INDICATOR = 'Next Questions:';
+export const NEXT_QUESTION_INDICATOR = 'Next Questions:';
 
-const requestOptions = {
+export const requestOptions = {
   approach: 'rrr',
   overrides: {
     retrieval_mode: 'hybrid',
@@ -76,23 +76,13 @@ const requestOptions = {
   },
 };
 
-const chatHttpOptions = {
+export const chatHttpOptions = {
   // API URL for development purposes
   url: 'http://localhost:3000',
   method: 'POST',
   stream: true,
 };
 
-const MAX_CHAT_HISTORY = 5;
+export const MAX_CHAT_HISTORY = 5;
 
-const APPROACH_MODEL = ['rrr', 'rtr'];
-
-export {
-  globalConfig,
-  requestOptions,
-  chatHttpOptions,
-  NEXT_QUESTION_INDICATOR,
-  APPROACH_MODEL,
-  teaserListTexts,
-  MAX_CHAT_HISTORY,
-};
+export const APPROACH_MODEL = ['rrr', 'rtr'];

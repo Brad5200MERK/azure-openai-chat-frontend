@@ -1,8 +1,8 @@
 import { ChatResponseError } from '../../utils/index.js';
 
 export async function callHttpApi(
-  { question, type, approach, overrides, messages }: ChatRequestOptions,
-  { method, url, stream, signal }: ChatHttpOptions,
+  { question, type, approach, overrides, messages },
+  { method, url, stream, signal }
 ) {
   return await fetch(`${url}/${type}`, {
     method: method,
@@ -27,18 +27,15 @@ export async function callHttpApi(
   });
 }
 
-export async function getAPIResponse(
-  requestOptions: ChatRequestOptions,
-  httpOptions: ChatHttpOptions,
-): Promise<BotResponse | Response> {
+export async function getAPIResponse(requestOptions, httpOptions) {
   const response = await callHttpApi(requestOptions, httpOptions);
 
-  // TODO: we should just use the value from httpOptions.stream
   const streamResponse = requestOptions.type === 'ask' ? false : httpOptions.stream;
   if (streamResponse) {
     return response;
   }
-  const parsedResponse: BotResponse = await response.json();
+  
+  const parsedResponse = await response.json();
   if (response.status > 299 || !response.ok) {
     throw new ChatResponseError(response.statusText, response.status) || 'API Response Error';
   }

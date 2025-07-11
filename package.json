@@ -23,14 +23,19 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dompurify": "^3.0.6",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "dompurify": "^3.2.6",
     "lit": "^2.8.0",
-    "marked": "^9.1.5"
+    "marked": "^16.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.0",
     "@types/dom-speech-recognition": "^0.0.4",
-    "@types/dompurify": "^3.0.3",
+    "@types/dompurify": "^3.2.0",
     "@types/node": "^20.12.5",
     "rimraf": "^5.0.1",
     "typescript": "^5.2.2",

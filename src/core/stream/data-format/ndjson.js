@@ -1,7 +1,8 @@
-export class NdJsonParserStream extends TransformStream<string, JSON> {
-  private buffer: string = '';
+export class NdJsonParserStream extends TransformStream {
   constructor() {
-    let controller: TransformStreamDefaultController<JSON>;
+    let controller;
+    let buffer = '';
+    
     super({
       start: (_controller) => {
         controller = _controller;
@@ -10,9 +11,9 @@ export class NdJsonParserStream extends TransformStream<string, JSON> {
         const jsonChunks = chunk.split('\n').filter(Boolean);
         for (const jsonChunk of jsonChunks) {
           try {
-            this.buffer += jsonChunk;
-            controller.enqueue(JSON.parse(this.buffer));
-            this.buffer = '';
+            buffer += jsonChunk;
+            controller.enqueue(JSON.parse(buffer));
+            buffer = '';
           } catch {
             // Invalid JSON, wait for next chunk
           }

@@ -1,5 +1,5 @@
 # Azure OpenAI Chat Frontend
-
+*****This is an update******
 A classic chat user interface that can be used to send messages to an OpenAI API and receive responses. 
 
 This application is frontend application implemented with [Lit](https://lit.dev/), consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
